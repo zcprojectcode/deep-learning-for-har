@@ -51,6 +51,18 @@ har-framework
 ├── README.md  
 ```
 
+### Usage
+The deep learning implementation allows different models to be compared:        
+```
+python main.py --model <model_name>
+```
+Available model_name options are:     
+- tiny_transformer    
+- transformer_encoder    
+- cnn    
+- gru    
+- deep_conv_lstm       
+
 The framework is separated into models bulit using Tensorflow (neural networks) and the models built using PyTorch (transformers). 
 
 config.py can be used to change the parametrisation of the deep learning models.  
