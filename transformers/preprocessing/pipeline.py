@@ -45,15 +45,7 @@ class Preprocessor:
                 continue
             imu = np.nan_to_num(imu, nan=0.0)
 
-            # if label == 8:
-            #     label = 3
-            # elif label > 8:
-            #     label -= 1
-
-            # cols_99_270 = np.concatenate([np.arange(99 + i*9, 99 + i*9 + 6) for i in range(19)])
             filtered_samples.append((imu, label))
-
-        # (imu[:, np.r_[start1:end1, start2:end2, 99:108, 117:135, 144:162, 180:207, 225:261]], label)
 
         self.samples = filtered_samples
 
@@ -111,22 +103,6 @@ class Preprocessor:
         train_samples_init = np.array(train_samples)
         train_labels_init = np.array(train_labels)
 
-        # Apply SMOTE
-        # logging.info(f"Apply SMOTE")
-        # train_samples_flat = train_samples_init.reshape(len(train_samples_init), -1)
-        # smote = SMOTE(sampling_strategy='minority', random_state=42)
-        # train_samples_smote, train_labels = smote.fit_resample(train_samples_flat, train_labels_init)
-
-        # train_samples = train_samples_smote.reshape(len(train_samples_smote), window_size, 198)
-
-        # Apply random oversampling
-        # logging.info(f"Apply random oversampling")
-        # train_samples_flat = train_samples_init.reshape(len(train_samples_init), -1)
-        # ros = RandomOverSampler(random_state=42)
-        # train_samples_ros, train_labels = ros.fit_resample(train_samples_flat, train_labels_init)
-
-        # train_samples = train_samples_ros.reshape(len(train_samples_ros), window_size, 270)
-
         # Log meta data
         logging.info(f"Number of test samples: {len(test_samples)}")
         logging.info(f"Number of training samples: {len(train_samples)}")
@@ -153,31 +129,6 @@ class Preprocessor:
         for sample_id, sample in enumerate(train_samples):
             sample = (sample - train_mean) / train_std
             train_samples[sample_id] = sample
-        
-        # # Convert data to binary
-        # logging.info("Convert data to binary - use specific thresholds instead of 2 std devs")
-
-        # # Define thresholds for columns 18-29
-        # thresholds = {
-        #     18: 2,
-        #     19: 10,
-        #     20: 5,
-        #     21: 50,
-        #     22: 5,
-        #     23: 5,
-        #     24: 2,
-        #     25: 2,
-        #     26: 2,
-        #     27: 1,
-        #     28: 2,
-        #     29: 2,
-        # }
-
-        # for dataset in [test_samples, train_samples]:
-        #     for sample in dataset:
-        #         for row in sample:
-        #             for col, threshold in thresholds.items():
-        #                 row[col] = 0 if abs(row[col]) < threshold else row[col]
 
         # Store the output
         out = [(np.array(train_samples), np.array(train_labels)), 
