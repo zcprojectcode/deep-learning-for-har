@@ -2,7 +2,7 @@
 This repository evaluates the performance of deep learning models for Human Activity Recognition (HAR) to support independent living in smart homes. We compare the HAR performance of a Tiny Transformer Encoder (tiny_transformer), Transformer Encoder (transformer_encoder), Convolutional Neural Network (cnn), Gated Recurrent Unit (gru) and Deep Convolutional LSTM (deep_conv_lstm) for fitting the Inertial Measurement Unit (IMU) data found here: https://doi.org/10.25919/d7xf-n080. The framework can be adapted for alternative datasets.     
 
 ### Previous work    
-Previous studies that evaluated the feasibility of IMU-based HAR using the same dataset can be found here:    
+Previous studies that evaluated the feasibility of IMU-based HAR using the same dataset include:    
 1- Moid Sandhu, et al. "Feasibility of motion sensor-based human activity recognition for supporting independence in smart homes." Maturitas 199 (2025): 108632. https://www.sciencedirect.com/science/article/pii/S0378512225004402    
 
 2- Moid Sandhu, et al. "Fusing IoT Wearable and Object Motion Sensors for Enhanced Activity Recognition in Smart Homes." 2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC). IEEE, 2025. https://ieeexplore.ieee.org/abstract/document/11253505/    
